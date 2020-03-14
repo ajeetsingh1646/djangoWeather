@@ -2,6 +2,91 @@
 
 {% block content %}
 
-<h1>Hello World!</h1>
+<br>
+
+<br>
+{% if api %}
+    
+    {% if api == "Error... "%}
+        There was an error, please try again...
+    {% else %}
+    
+    <div class="jumbotron">
+        <h1 class="display-4"> 
+        {% if aq > 0 and aq < 50 %}
+            Good
+        {%endif%}
+        {% if aq > 50 and aq < 100 %}
+            Moderate
+        {%endif%}
+        {% if aq > 100 and aq < 150 %}
+            Unhealthy for Sensitive Groups
+        {%endif%}
+        {% if aq > 150 and aq < 200 %}
+            Unhealthy
+        {%endif%}
+        {% if aq > 200 and aq < 300 %}
+            Very Unhealthy
+        {%endif%}
+        {% if aq > 300 %}
+            Hazardous
+        {%endif%}</h1>
+        <p class="lead">AQI : {{api.data.aqi}}
+    
+        </p>
+        <p class="lead">{{api.data.city.name}}</p>
+        
+        <p>Health Implications: {% if aq > 0 and aq < 50 %}
+            Air quality is considered satisfactory, and air pollution poses little or no risk.
+        {%endif%}
+        {% if aq > 50 and aq < 100 %}
+            Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.
+        {%endif%}
+        {% if aq > 100 and aq < 150 %}
+            Members of sensitive groups may experience health effects. The general public is not likely to be affected.	
+        {%endif%}
+        {% if aq > 150 and aq < 200 %}
+            Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.
+        {%endif%}
+        {% if aq > 200 and aq < 300 %}
+            Health warnings of emergency conditions. The entire population is more likely to be affected.
+        {%endif%}
+        {% if aq > 300 %}
+            Health alert: everyone may experience more serious health effects.
+        {%endif%}</p>
+        
+        
+        <p>Cautionary Statement (for PM2.5): {% if aq > 0 and aq < 50 %}
+            You does not require any caution.
+        {%endif%}
+        {% if aq > 50 and aq < 100 %}
+            Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.
+        {%endif%}
+        {% if aq > 100 and aq < 150 %}
+            Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.
+        {%endif%}
+        {% if aq > 150 and aq < 200 %}
+            Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion.
+        {%endif%}
+        {% if aq > 200 and aq < 300 %}
+            Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.
+
+        {%endif%}
+        {% if aq > 300 %}
+            Everyone should avoid all outdoor exertion.
+        {%endif%}</p>
+    </div>
+    
+    
+    
+    
+    {% endif %}
+    
+{% endif %}
 
 {% endblock %}
+
+
+
+
+          
