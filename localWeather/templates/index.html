@@ -4,14 +4,17 @@
 
 <br>
 
-<br>
+{% if city1 %}
+    {{city1}}
+{% endif %}
+
 {% if api %}
     
     {% if api == "Error... "%}
         There was an error, please try again...
     {% else %}
     
-    <div class="jumbotron">
+    <div class="jumbotron {{category_color}}">
         <h1 class="display-4"> 
         {% if aq > 0 and aq < 50 %}
             Good
